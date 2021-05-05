@@ -1,6 +1,6 @@
-package com.codeup.lunablog.controllers;
+package com.codeup.springblog.controllers;
 
-import com.codeup.lunablog.models.Post;
+import com.codeup.springblog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,7 @@
-package com.codeup.lunablog.controllers;
+package com.codeup.springblog.controllers;
 
-import com.codeup.lunablog.models.Ad;
-import com.codeup.lunablog.repositories.AdRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeup.springblog.models.Ad;
+import com.codeup.springblog.repositories.AdRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
