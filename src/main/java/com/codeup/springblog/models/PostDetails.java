@@ -19,6 +19,9 @@ public class PostDetails {
     @Column(columnDefinition = "TEXT")
     private String topicDescription;
 
+    @OneToOne
+    private Post postId;
+
     public PostDetails() {
     }
 
