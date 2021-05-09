@@ -19,9 +19,6 @@ public class PostDetails {
     @Column(columnDefinition = "TEXT")
     private String topicDescription;
 
-    @OneToOne
-    private Post postId;
-
     public PostDetails() {
     }
 
@@ -40,11 +37,11 @@ public class PostDetails {
         this.id = id;
     }
 
-    public boolean isAwesome() {
+    public boolean getIsAwesome() {
         return isAwesome;
     }
 
-    public void setAwesome(boolean awesome) {
+    public boolean setIsAwesome(boolean awesome) {
         isAwesome = awesome;
     }
 

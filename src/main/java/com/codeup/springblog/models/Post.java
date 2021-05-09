@@ -16,6 +16,9 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private PostDetails postDetails;
+
     public Post() {
     }
 
