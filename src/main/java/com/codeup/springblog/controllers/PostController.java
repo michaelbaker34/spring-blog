@@ -4,10 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.repositories.PostRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +29,20 @@ public class PostController {
     public String show(@PathVariable long id, Model vModel) {
         vModel.addAttribute("post", postsDao.getOne(id));
         return "posts/show";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String update(
+            @PathVariable long id,
+            @RequestParam String title,
+            @RequestParam String body) {
+        Post postToUpdate = new Post (
+                id,
+                title,
+                body
+        );
+        postsDao.save(postToUpdate);
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/create")
