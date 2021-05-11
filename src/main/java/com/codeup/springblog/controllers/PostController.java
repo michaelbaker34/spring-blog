@@ -30,7 +30,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-        vModel.addAttribute("posts", postsDao.getOne(id));
+        vModel.addAttribute("post", postsDao.getOne(id));
         return "posts/show";
     }
 
