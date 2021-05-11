@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.PostRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,26 +16,21 @@ import java.util.List;
 @Controller
 public class PostController {
 
+    private final PostRepo postsDao;
+
+    public PostController(PostRepo postsDao) {
+        this.postsDao = postsDao;
+    }
+
     @GetMapping("/posts")
     public String index(Model vModel) {
-
-        List<Post> posts = new ArrayList<>(Arrays.asList(
-                new Post("Post Title 1", "Yadda yadda yadda yadda 1."),
-                new Post("Post Title 2", "Yadda yadda yadda yadda 2."),
-                new Post("Post Title 3", "Yadda yadda yadda yadda 3.")
-        ));
-
-        vModel.addAttribute("posts", posts);
-
+        vModel.addAttribute("posts", postsDao.findAll());
         return "posts/index";
-
     }
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model vModel) {
-        Post post = new Post("Test Title", "Test Body");
-        vModel.addAttribute("id", id);
-        vModel.addAttribute("post", post);
+        vModel.addAttribute("posts", postsDao.getOne(id));
         return "posts/show";
     }
 

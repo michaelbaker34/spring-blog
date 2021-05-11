@@ -8,7 +8,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long postId;
+    private long id;
 
     @Column(nullable = false)
     private String title;
@@ -16,14 +16,11 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private PostDetails postDetails;
-
     public Post() {
     }
 
-    public Post(long postId, String title, String body) {
-        this.postId = postId;
+    public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
     }
@@ -34,11 +31,11 @@ public class Post {
     }
 
     public long getId() {
-        return postId;
+        return id;
     }
 
-    public void setId(long postId) {
-        this.postId = postId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
