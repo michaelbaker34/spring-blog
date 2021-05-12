@@ -68,6 +68,7 @@ public class PostController {
         User author = usersDao.getOne(1L);
         post.setUser(author);
         Post savedPost = postsDao.save(post);
+        emailSvc.prepareAndSend(post, "Post Created", "You have created a post");
         return "redirect:/posts/" + savedPost.getId();
     }
 
