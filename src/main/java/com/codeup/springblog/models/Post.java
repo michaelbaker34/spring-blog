@@ -13,8 +13,11 @@ public class Post {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
+
+    @ManyToOne
+    private User user;
 
     public Post() {
     }
