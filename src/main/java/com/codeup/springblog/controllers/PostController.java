@@ -32,16 +32,29 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/edit")
+    public String edit(@PathVariable long id, Model vModel) {
+        Post postToEdit = postsDao.getOne(id);
+        vModel.addAttribute("post", postToEdit);
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
     public String update(
             @PathVariable long id,
             @RequestParam String title,
             @RequestParam String body) {
-        Post postToUpdate = new Post (
+        Post postToUpdate = new Post(
                 id,
                 title,
                 body
         );
         postsDao.save(postToUpdate);
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable long id) {
+        postsDao.deleteById(id);
         return "redirect:/posts";
     }
 
