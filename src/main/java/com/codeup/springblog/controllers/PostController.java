@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepo;
 import com.codeup.springblog.repositories.UserRepo;
+import com.codeup.springblog.services.EmailSvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,12 @@ public class PostController {
 
     private final PostRepo postsDao;
     private final UserRepo usersDao;
+    private final EmailSvc emailSvc;
 
-    public PostController(PostRepo postsDao, UserRepo usersDao) {
+    public PostController(PostRepo postsDao, UserRepo usersDao, EmailSvc emailSvc) {
         this.postsDao = postsDao;
         this.usersDao = usersDao;
+        this.emailSvc = emailSvc;
     }
 
     @GetMapping("/posts")
