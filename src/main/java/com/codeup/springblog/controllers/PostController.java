@@ -20,6 +20,7 @@ public class PostController {
     private final PostRepo postsDao;
     private final UserRepo usersDao;
     private final EmailSvc emailSvc;
+    private String  fileSvc;
 
     public PostController(PostRepo postsDao, UserRepo usersDao, EmailSvc emailSvc) {
         this.postsDao = postsDao;
